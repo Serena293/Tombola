@@ -4,9 +4,9 @@ body {
 
 main {
   text-align: center;
-  /* width: 80%;
+  width: 50%;
   margin-right: auto;
-  margin-left: auto; */
+  margin-left: auto;
 }
 
 header {
@@ -17,17 +17,21 @@ header {
   margin-bottom: 2.5em;
 }
 
-#tabellone {
+ #tabellone {
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(15, 0fr);
   text-align: center;
   /* border-collapse: collapse; */
-  margin-right: auto;
-  margin-left: auto;
-  width: 50%;
+  width: auto;
   padding-right: auto;
-  padding-left:auto
+  padding-left: auto;
+  box-sizing: border-box;
 }
+
+#cartelleGiocatori{display: grid;
+align-items: center;
+grid-template-columns: repeat(5, 0fr);}
 
 .singolaCasella {
   border: 2px solid brown;
@@ -40,10 +44,16 @@ header {
   cursor: pointer;
 }
 
-#pulsanteEstrazione{
-    margin-top: 4em;
-    padding: 0.5em 1em;
-    border-radius: 5px;
+.pulsante {
+  margin-top: 4em;
+  padding: 0.5em 1em;
+  border-radius: 5px;
 }
 
-.numeroEstratto {background-color: brown;}
+.numeroEstratto {
+  background-color: brown;
+}
+
+.gold {
+  background-color: gold;
+}
