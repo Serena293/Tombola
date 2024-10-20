@@ -29,9 +29,10 @@ header {
   box-sizing: border-box;
 }
 
-#cartelleGiocatori{display: grid;
+#cartelleGiocatori, .contenitoreCartella{display: grid;
 align-items: center;
-grid-template-columns: repeat(5, 0fr);}
+grid-template-columns: repeat(5, 0fr);
+margin: 2em;}
 
 .singolaCasella {
   border: 2px solid brown;

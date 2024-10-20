@@ -34,11 +34,16 @@ const estraiNumero = () => {
 
 
 const creaCartella = () => {
+    const contenitoreCartella = document.createElement('div')
+    contenitoreCartella.classList.add('contenitoreCartella')
+    cartelleGiocatori.appendChild(contenitoreCartella)
+
+
     for (let i = 1; i <= 15; i++) {
         const casella = document.createElement("div");
         casella.classList.add("singolaCasella");
         casella.innerText = Math.ceil(Math.random() * 90);
-        cartelleGiocatori.appendChild(casella);
+        contenitoreCartella.appendChild(casella);
       }
 }
 
