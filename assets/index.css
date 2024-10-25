@@ -34,11 +34,18 @@ header {
   /* padding-left: auto; */
   /* box-sizing: border-box; */
 }
-
-#cartelleGiocatori, .contenitoreCartella{display: grid;
+ .contenitoreCartella{display: grid;
 align-items: center;
 grid-template-columns: repeat(5, 0fr);
-margin: 2em;}
+margin: 2em;
+}
+
+
+#cartelleGiocatori{display: flex;
+flex-wrap: wrap;
+width: 95%;
+margin-left: auto;
+margin-right: auto;}
 
 .singolaCasella {
   display: flex;
