@@ -2,19 +2,23 @@ body {
   text-align: center;
 }
 
+
 main {
   text-align: center;
   width: 50%;
   margin-right: auto;
   margin-left: auto;
+  padding-top: 18em;
 }
 
 header {
   background-color: brown;
-  padding: 4em;
+  padding: 4em 0;
   text-align: center;
   font-size: 25px;
   margin-bottom: 2.5em;
+  position: fixed;
+  width: 100%;
 }
 
  #tabellone {
@@ -22,7 +26,6 @@ header {
   align-items: center;
   grid-template-columns: repeat(15, 0fr);
   text-align: center;
-  /* border-collapse: collapse; */
   width: auto;
   padding-right: auto;
   padding-left: auto;
@@ -55,6 +58,14 @@ margin: 2em;}
   background-color: brown;
 }
 
-.gold {
+/* .gold {
   background-color: gold;
-}
+} */
+
+
+/* .tasti{display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 40%;
+} */
+/* .blur { filter: blur(5px);} prova per altro progetto */
