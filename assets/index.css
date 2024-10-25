@@ -1,14 +1,16 @@
-body {
+/* body {
   text-align: center;
-}
+} */
 
 
 main {
   text-align: center;
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
+/* display: grid;
+grid-template-columns: 4 1fr; */
+  margin-right: 4vh;
+  /* margin-left: 4vh; */
   padding-top: 18em;
+  
 }
 
 header {
@@ -22,14 +24,15 @@ header {
 }
 
  #tabellone {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  grid-template-columns: repeat(15, 0fr);
+
   text-align: center;
-  width: auto;
-  padding-right: auto;
-  padding-left: auto;
-  box-sizing: border-box;
+  width: 80%;
+  margin: auto;
+  /* padding-left: auto; */
+  /* box-sizing: border-box; */
 }
 
 #cartelleGiocatori, .contenitoreCartella{display: grid;
@@ -38,6 +41,7 @@ grid-template-columns: repeat(5, 0fr);
 margin: 2em;}
 
 .singolaCasella {
+  display: flex;
   border: 2px solid brown;
   padding: 0.4em;
   text-align: center;
@@ -46,6 +50,7 @@ margin: 2em;}
   width: 4vh;
   height: 4vh;
   cursor: pointer;
+  flex: 0 0 calc(50% / 10)
 }
 
 .pulsante {
@@ -57,6 +62,7 @@ margin: 2em;}
 .numeroEstratto {
   background-color: brown;
 }
+
 
 /* .gold {
   background-color: gold;
