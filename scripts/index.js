@@ -3,15 +3,14 @@ const pulsanteEstrazione = document.getElementById("pulsanteEstrazione");
 const pulsanteNuovaCartella = document.getElementById("aggiungiCartella");
 const cartelleGiocatori = document.getElementById("cartelleGiocatori");
 
-
-
 const importaOpzioni = () => {
-  const giocatori = JSON.parse(localStorage.getItem('giocatori'))
- const cartelle =JSON.parse(localStorage.getItem('cartelle'))
-  return {giocatori, cartelle}
-}
+  const giocatori = JSON.parse(localStorage.getItem("giocatori"));
+  const cartelle = JSON.parse(localStorage.getItem("cartelle"));
+  const nomi = JSON.parse(localStorage.getItem('nomi'))
+  return { giocatori, cartelle, nomi};
+};
 
-
+const { giocatori, cartelle } = importaOpzioni();
 
 const numeriEstratti = [];
 
@@ -23,7 +22,7 @@ const generaTabellone = () => {
     tabellone.appendChild(casella);
   }
 };
-
+console.log(importaOpzioni());
 const casella = document.getElementsByClassName("singolaCasella");
 
 const creaCartella = () => {
@@ -31,12 +30,18 @@ const creaCartella = () => {
   contenitoreCartella.classList.add("contenitoreCartella");
   cartelleGiocatori.appendChild(contenitoreCartella);
 
+  // for (let j = 1; j <= giocatori; j++) {
+  //   const giocatori = document.createElement("div");
+  //   giocatori.classList.add("giocatore");
+  //   giocatori.innerText = "Giocatore";
+  //   contenitoreCartella.append(giocatori);
+  // }
   
   for (let i = 1; i <= 15; i++) {
     const casella = document.createElement("div");
     casella.classList.add("singolaCasella");
     casella.innerText = Math.ceil(Math.random() * 90);
-    contenitoreCartella.appendChild(casella);
+   contenitoreCartella.appendChild(casella);
   }
 };
 
@@ -69,7 +74,6 @@ const estraiNumero = () => {
   //   console.log(numeriEstratti);
 };
 
-importaOpzioni()
 generaTabellone();
 
 pulsanteEstrazione.addEventListener("click", estraiNumero);

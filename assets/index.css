@@ -71,6 +71,9 @@ margin-right: auto;}
 }
 
 
+.giocatore { border: 1p solid black;
+background-color: yellow;}
+
 /* .gold {
   background-color: gold;
 } */
