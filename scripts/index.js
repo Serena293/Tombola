@@ -3,6 +3,16 @@ const pulsanteEstrazione = document.getElementById("pulsanteEstrazione");
 const pulsanteNuovaCartella = document.getElementById("aggiungiCartella");
 const cartelleGiocatori = document.getElementById("cartelleGiocatori");
 
+
+
+const importaOpzioni = () => {
+  const giocatori = JSON.parse(localStorage.getItem('giocatori'))
+ const cartelle =JSON.parse(localStorage.getItem('cartelle'))
+  return {giocatori, cartelle}
+}
+
+
+
 const numeriEstratti = [];
 
 const generaTabellone = () => {
@@ -21,6 +31,7 @@ const creaCartella = () => {
   contenitoreCartella.classList.add("contenitoreCartella");
   cartelleGiocatori.appendChild(contenitoreCartella);
 
+  
   for (let i = 1; i <= 15; i++) {
     const casella = document.createElement("div");
     casella.classList.add("singolaCasella");
@@ -58,6 +69,7 @@ const estraiNumero = () => {
   //   console.log(numeriEstratti);
 };
 
+importaOpzioni()
 generaTabellone();
 
 pulsanteEstrazione.addEventListener("click", estraiNumero);

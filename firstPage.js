@@ -5,20 +5,15 @@ const inputNumDiCartelle = document.getElementById('numero-di-cartelle')
 const form = document.getElementById('form-numero-di-giocarori')
 
  
-let numeroDiGiocatori;
+const selezionaOpzioni = () => {
 
+const numeroDiGiocatori = inputNumDiGiocatori.value 
+const numeroDiCartelle = inputNumDiCartelle.value
 
-const selezionaOpzioni = () => {    
-    let numeroDiGiocatori = inputNumDiGiocatori.value;
-    let numeroDiCartelle = inputNumDiCartelle.value;
-    
-    localStorage.setItem('opzioni', JSON.stringify({ numeroDiGiocatori, numeroDiCartelle }));
+  localStorage.setItem('giocatori',JSON.stringify(numeroDiGiocatori))
+ localStorage.setItem('cartelle',JSON.stringify(numeroDiCartelle))
 
-  
-    return { numeroDiGiocatori, numeroDiCartelle };
-};
-console.log(selezionaOpzioni())
-
+}
 
 const regole = () => {
   regoleDelGioco.innerHTML = `<ol>
@@ -27,9 +22,6 @@ const regole = () => {
     <li>Clicca Estrai Numero per selezionare un numero </li>
     </ol>`;
 };
-
-
-
 
 
 iniziaBtn.addEventListener('click', selezionaOpzioni())
@@ -43,7 +35,9 @@ regoleDelGioco.addEventListener("mouseout", () => {
   }, 1000);
 });
 
-// iniziaBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   window.location.href = "index.html";
-// });
+iniziaBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  selezionaOpzioni()
+  window.location.href = "index.html";
+});
+
