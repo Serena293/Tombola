@@ -23,14 +23,14 @@ const selezionaOpzioni = () => {
   }
   localStorage.setItem("nomi", JSON.stringify(nomi));
   localStorage.setItem("giocatori", JSON.stringify(numeroDiGiocatori));
-  //  localStorage.setItem('cartelle',JSON.stringify(numeroDiCartelle))
+   localStorage.setItem('cartelle',JSON.stringify(numeroDiCartelle))
 };
 
 const importaOpzioni = () => {
   const giocatori = JSON.parse(localStorage.getItem("giocatori"));
   const nomi = JSON.parse(localStorage.getItem("nomi"));
-  // const cartelle = JSON.parse(localStorage.getItem("cartelle")); NB: aggiungi cartella a return dopo
-  return { giocatori, nomi };
+  const cartelle = JSON.parse(localStorage.getItem("cartelle"));
+  return { giocatori, nomi, cartelle };
 };
 
 // const { giocatori, cartelle } = importaOpzioni();
@@ -124,7 +124,7 @@ avantiBtn.addEventListener("click", (e) => {
     const inputNumeroCartelle = document.getElementById("numero-di-cartelle-input");
     if (inputNumeroCartelle && inputNumeroCartelle.value !== "") {
       creaIniziaBtn();
-      avantiClick = 0; // Reset to allow the sequence to repeat if needed
+      avantiClick = 0; 
     }
   }
   
