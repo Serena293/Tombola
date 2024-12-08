@@ -4,6 +4,7 @@ const regoleDelGioco = document.getElementById("regole-del-gioco");
 // const inputNumDiCartelle = document.getElementById('numero-di-cartelle') aggiungere dopo, generare con js
 const form = document.getElementById("form-numero-di-giocarori");
 const avantiBtn = document.getElementById("btn-avanti");
+
 let avantiClick = 0;
 
 const selezionaOpzioni = () => {
@@ -56,6 +57,14 @@ const creaInputNomeDeiGiocatori = (giocatori) => {
 const cartelle = () => {
   const nomeDelGiocatore = document.querySelector("input-nomeDelGiocatore");
   if (nomeDelGiocatore !== 0) {
+
+
+    const label = document.createElement("label");
+    label.setAttribute("for", "numero-di-cartelle-input");
+    label.innerText = "Seleziona numero di cartelle";
+    form.appendChild(label);
+  }
+
     const inputNumeroCartelle = document.createElement("input");
     inputNumeroCartelle.setAttribute("type", "number");
     inputNumeroCartelle.setAttribute("id", "numero-di-cartelle-input");
@@ -63,11 +72,6 @@ const cartelle = () => {
     inputNumeroCartelle.setAttribute("max", "4");
     form.appendChild(inputNumeroCartelle);
 
-    const label = document.createElement("label");
-    label.setAttribute("for", "numero-di-cartelle-input");
-    label.innerText = "Seleziona numero di cartelle";
-    form.appendChild(label);
-  }
 };
 
 const creaIniziaBtn = () => {
@@ -131,5 +135,5 @@ avantiBtn.addEventListener("click", (e) => {
 }
 );
 
-// const iniziaBtn = document.getElementById('inizia-btn')
+const iniziaBtn = document.getElementById('inizia-btn')
 // console.log(importaOpzioni());

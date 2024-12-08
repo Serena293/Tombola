@@ -1,1 +1,44 @@
-.input-nomeDelGiocatore {width: 100px;}
+.input-nomeDelGiocatore {
+  width: 100px;
+}
+body {
+  height: 100vh;
+}
+h1 {
+  font-size: 36px;
+  margin-bottom: 1em;
+}
+
+.flex {
+  display: flex;
+  gap: 1em;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  gap: 1em
+}
+.main {
+  flex-direction: column;
+
+  align-items: center;
+  margin-top: 20vh;
+}
+
+#regole-del-gioco {
+  margin-bottom: 1em;
+}
+
+#regole-del-gioco ol li {
+  text-align: center;
+  list-style: none;
+}
+#btn-avanti {
+  border: none;
+  padding: 0.5em 1em;
+}
+
+#inizia-btn {
+  border: none;
+  padding: 0.5em 1em;
+}
