@@ -3,7 +3,6 @@ const regoleDelGioco = document.getElementById("regole-del-gioco");
 const form = document.getElementById("form-numero-di-giocarori");
 const avantiBtn = document.getElementById("btn-avanti");
 const mainSection = document.getElementById("main-section");
-
 const contaNumeroGiocatori = (e) => {
   e.preventDefault(); // Prevent form submission
   const numeroDiGiocatori = parseInt(inputNumDiGiocatori.value);
@@ -15,6 +14,9 @@ const contaNumeroGiocatori = (e) => {
 
   // Clear any previously created forms
   regoleDelGioco.innerHTML = "";
+
+  // Initialize an object to store players' cartelle
+  const giocatoriData = {};
 
   for (let i = 0; i < numeroDiGiocatori; i++) {
     // Create a form for each player
@@ -42,11 +44,23 @@ const contaNumeroGiocatori = (e) => {
   // Attach event listeners to each dynamically created button
   document.querySelectorAll(".btn-inizia").forEach((button, index) => {
     button.addEventListener("click", () => {
-      const numeroCartelle = document.getElementById(`numero-di-cartelle-${index}`).value;
+      const numeroCartelle = parseInt(document.getElementById(`numero-di-cartelle-${index}`).value);
+
+      if (isNaN(numeroCartelle) || numeroCartelle < 1 || numeroCartelle > 4) {
+        alert(`Giocatore ${index + 1}: Inserisci un numero valido di cartelle (1-4).`);
+        return;
+      }
+
+      // Save cartelle count for the specific player
+      giocatoriData[`Giocatore${index + 1}`] = numeroCartelle;
+
+      // Save the entire object to localStorage
+      localStorage.setItem("giocatoriData", JSON.stringify(giocatoriData));
       console.log(`Giocatore ${index + 1} ha scelto ${numeroCartelle} cartelle.`);
     });
   });
 };
+
 
 
 avantiBtn.addEventListener("click", contaNumeroGiocatori);
