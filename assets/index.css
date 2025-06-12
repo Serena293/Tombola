@@ -1,87 +1,185 @@
-/* body {
-  text-align: center;
-} */
-
-
-main {
-  text-align: center;
-/* display: grid;
-grid-template-columns: 4 1fr; */
-  margin-right: 4vh;
-  /* margin-left: 4vh; */
-  padding-top: 18em;
-  
+/* Reset e stili base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
 header {
-  background-color: brown;
-  padding: 4em 0;
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 2.5em;
-  position: fixed;
-  width: 100%;
+    background-color: #9E2B22;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
- #tabellone {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  text-align: center;
-  width: 80%;
-  margin: auto;
-  /* padding-left: auto; */
-  /* box-sizing: border-box; */
-}
- .contenitoreCartella{display: grid;
-align-items: center;
-grid-template-columns: repeat(5, 0fr);
-margin: 2em;
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
+header h1 {
+    font-size: 2rem;
+}
 
-#cartelleGiocatori{display: flex;
-flex-wrap: wrap;
-width: 95%;
-margin-left: auto;
-margin-right: auto;}
+#player-info {
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
 
+#player-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.game-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.cartelle-control {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Tabellone */
+.tabellone {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Cartelle */
+.cartelle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.contenitoreCartella {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    padding: 1.5rem 1rem 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    border-top: 4px solid;
+}
+
+.player-name {
+    position: absolute;
+    top: -0.8rem;
+    left: 1rem;
+    background: white;
+    padding: 0 0.5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Caselle numeri */
 .singolaCasella {
-  display: flex;
-  border: 2px solid brown;
-  padding: 0.4em;
-  text-align: center;
-  font-size: 20px;
-  border-radius: 5px;
-  width: 4vh;
-  height: 4vh;
-  cursor: pointer;
-  flex: 0 0 calc(50% / 10)
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: #f9f9f9;
+    transition: all 0.2s ease;
 }
 
-.pulsante {
-  margin-top: 4em;
-  padding: 0.5em 1em;
-  border-radius: 5px;
+.singolaCasella:hover {
+    background-color: #f0f0f0;
 }
 
 .numeroEstratto {
-  background-color: brown;
+    background-color: #9E2B22;
+    color: white;
+    transform: scale(1.05);
+    border-color: #9E2B22;
 }
 
+/* Pulsanti */
+.pulsante {
+    background-color: #2E5E4E;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+}
 
-.giocatore { border: 1p solid black;
-background-color: yellow;}
+.pulsante:hover {
+    background-color: #9E2B22;
+    transform: translateY(-2px);
+}
 
-/* .gold {
-  background-color: gold;
-} */
+/* Colori giocatori */
+.contenitoreCartella.giocatore-1 { border-color: #4285F4; }
+.contenitoreCartella.giocatore-2 { border-color: #EA4335; }
+.contenitoreCartella.giocatore-3 { border-color: #FBBC05; }
+.contenitoreCartella.giocatore-4 { border-color: #34A853; }
+.contenitoreCartella.giocatore-5 { border-color: #673AB7; }
+.contenitoreCartella.giocatore-6 { border-color: #FF6D00; }
 
-
-/* .tasti{display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-gap: 40%;
-} */
-/* .blur { filter: blur(5px);} prova per altro progetto */
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #player-info {
+        margin-top: 1rem;
+    }
+    
+    .singolaCasella {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 0.9rem;
+    }
+}

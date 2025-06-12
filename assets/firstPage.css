@@ -1,44 +1,49 @@
-.input-nomeDelGiocatore {
-  width: 100px;
-}
-body {
-  height: 100vh;
-}
-h1 {
-  font-size: 36px;
-  margin-bottom: 1em;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
-.flex {
-  display: flex;
-  gap: 1em;
-}
-.column{
-  display: flex;
-  flex-direction: column;
-  gap: 1em
-}
-.main {
-  flex-direction: column;
-
-  align-items: center;
-  margin-top: 20vh;
+.setup-panel {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin-top: 2rem;
 }
 
-#regole-del-gioco {
-  margin-bottom: 1em;
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
-#regole-del-gioco ol li {
-  text-align: center;
-  list-style: none;
-}
-#btn-avanti {
-  border: none;
-  padding: 0.5em 1em;
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-#inizia-btn {
-  border: none;
-  padding: 0.5em 1em;
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    background-color: #2E5E4E;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #9E2B22;
 }

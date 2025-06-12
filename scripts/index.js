@@ -1,80 +1,125 @@
+// Recupera le impostazioni dal localStorage
+const getGameSettings = () => {
+    const defaultSettings = {
+        players: ['Giocatore 1'],
+        cardsPerPlayer: 1,
+        createdAt: new Date().toISOString()
+    };
+    
+    const savedSettings = localStorage.getItem('tombolaSettings');
+    return savedSettings ? JSON.parse(savedSettings) : defaultSettings;
+};
+
+const { players, cardsPerPlayer } = getGameSettings();
+const numeriEstratti = [];
 const tabellone = document.getElementById("tabellone");
 const pulsanteEstrazione = document.getElementById("pulsanteEstrazione");
 const pulsanteNuovaCartella = document.getElementById("aggiungiCartella");
 const cartelleGiocatori = document.getElementById("cartelleGiocatori");
+const playerInfoEl = document.getElementById("player-info");
 
-const importaOpzioni = () => {
-  const giocatori = JSON.parse(localStorage.getItem("giocatori"));
-  const cartelle = JSON.parse(localStorage.getItem("cartelle"));
-  const nomi = JSON.parse(localStorage.getItem('nomi'))
-  return { giocatori, cartelle, nomi};
-};
+// Mostra info giocatori
+playerInfoEl.innerHTML = `
+    <h3>${players.length > 1 ? 'Giocatori' : 'Giocatore'}: ${players.join(', ')}</h3>
+    <p>${cardsPerPlayer} cartella${cardsPerPlayer > 1 ? 'e' : ''} per giocatore</p>
+`;
 
-const { giocatori, cartelle } = importaOpzioni();
-
-const numeriEstratti = [];
-
+// Genera il tabellone
 const generaTabellone = () => {
-  for (let i = 1; i <= 90; i++) {
-    const casella = document.createElement("div");
-    casella.classList.add("singolaCasella");
-    casella.innerText = i;
-    tabellone.appendChild(casella);
-  }
-};
-console.log(importaOpzioni());
-const casella = document.getElementsByClassName("singolaCasella");
-
-const creaCartella = () => {
-  const contenitoreCartella = document.createElement("div");
-  contenitoreCartella.classList.add("contenitoreCartella");
-  cartelleGiocatori.appendChild(contenitoreCartella);
-
-  // for (let j = 1; j <= giocatori; j++) {
-  //   const giocatori = document.createElement("div");
-  //   giocatori.classList.add("giocatore");
-  //   giocatori.innerText = "Giocatore";
-  //   contenitoreCartella.append(giocatori);
-  // }
-  
-  for (let i = 1; i <= 15; i++) {
-    const casella = document.createElement("div");
-    casella.classList.add("singolaCasella");
-    casella.innerText = Math.ceil(Math.random() * 90);
-   contenitoreCartella.appendChild(casella);
-  }
+    for (let i = 1; i <= 90; i++) {
+        const casella = document.createElement("div");
+        casella.classList.add("singolaCasella");
+        casella.textContent = i;
+        tabellone.appendChild(casella);
+    }
 };
 
+// Genera numeri unici per cartella
+const generaNumeriCartella = () => {
+    const numeri = [];
+    while (numeri.length < 15) {
+        const num = Math.floor(Math.random() * 90) + 1;
+        if (!numeri.includes(num)) {
+            numeri.push(num);
+        }
+    }
+    return numeri.sort((a, b) => a - b);
+};
+
+// Crea una nuova cartella per un giocatore specifico
+const creaCartella = (playerIndex) => {
+    const contenitoreCartella = document.createElement("div");
+    contenitoreCartella.classList.add("contenitoreCartella", `giocatore-${(playerIndex % 6) + 1}`);
+    
+    const playerName = document.createElement("div");
+    playerName.classList.add("player-name");
+    playerName.textContent = players[playerIndex];
+    contenitoreCartella.appendChild(playerName);
+    
+    const numeriCartella = generaNumeriCartella();
+    numeriCartella.forEach(numero => {
+        const casella = document.createElement("div");
+        casella.classList.add("singolaCasella");
+        casella.textContent = numero;
+        contenitoreCartella.appendChild(casella);
+    });
+    
+    cartelleGiocatori.appendChild(contenitoreCartella);
+};
+
+// Estrae un numero casuale
 const estraiNumero = () => {
-  const numeroCasuale = Math.ceil(Math.random() * 90);
-
-  if (numeriEstratti.includes(numeroCasuale)) {
-    return estraiNumero();
-  }
-
-  numeriEstratti.push(numeroCasuale);
-
-  for (let i = 0; i < casella.length; i++) {
-    if (parseInt(casella[i].innerText) === numeroCasuale) {
-      casella[i].classList.add("numeroEstratto");
-      break;
+    if (numeriEstratti.length >= 90) {
+        alert("Tutti i numeri sono stati estratti!");
+        pulsanteEstrazione.disabled = true;
+        return;
     }
-  }
-  const cartelle = document.getElementsByClassName("contenitoreCartella");
-  for (let i = 0; i < cartelle.length; i++) {
-    const numeriCasella = cartelle[i].getElementsByClassName("singolaCasella");
-    for (let j = 0; j < numeriCasella.length; j++) {
-      if (parseInt(numeriCasella[j].innerText) === numeroCasuale) {
-        numeriCasella[j].classList.add("numeroEstratto");
-        break;
-      }
-    }
-  }
 
-  //   console.log(numeriEstratti);
+    let numeroCasuale;
+    do {
+        numeroCasuale = Math.floor(Math.random() * 90) + 1;
+    } while (numeriEstratti.includes(numeroCasuale));
+
+    numeriEstratti.push(numeroCasuale);
+    console.log(`Estratto: ${numeroCasuale}`);
+
+    // Evidenzia sul tabellone
+    const caselleTabellone = document.querySelectorAll("#tabellone .singolaCasella");
+    caselleTabellone.forEach(casella => {
+        if (parseInt(casella.textContent) === numeroCasuale) {
+            casella.classList.add("numeroEstratto");
+        }
+    });
+
+    // Evidenzia nelle cartelle
+    const cartelle = document.querySelectorAll(".contenitoreCartella");
+    cartelle.forEach(cartella => {
+        const caselle = cartella.querySelectorAll(".singolaCasella");
+        caselle.forEach(casella => {
+            if (parseInt(casella.textContent) === numeroCasuale) {
+                casella.classList.add("numeroEstratto");
+            }
+        });
+    });
 };
 
-generaTabellone();
+// Crea cartelle iniziali
+const creaCartelleIniziali = () => {
+    for (let playerIdx = 0; playerIdx < players.length; playerIdx++) {
+        for (let i = 0; i < cardsPerPlayer; i++) {
+            creaCartella(playerIdx);
+        }
+    }
+};
 
+// Aggiungi nuova cartella (distribuzione rotativa)
+let currentPlayerIndex = 0;
+pulsanteNuovaCartella.addEventListener("click", () => {
+    creaCartella(currentPlayerIndex);
+    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+});
+
+// Inizializzazione
+generaTabellone();
+creaCartelleIniziali();
 pulsanteEstrazione.addEventListener("click", estraiNumero);
-pulsanteNuovaCartella.addEventListener("click", creaCartella);

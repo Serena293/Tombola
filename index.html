@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tombola</title>
+    <title>Tombola - Partita in corso</title>
     <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/index.css" />
   </head>
   <body>
     <header>
-      <h1>Tombola</h1>
+      <div class="header-content">
+        <h1>Tombola</h1>
+        <div id="player-info"></div>
+      </div>
     </header>
+
     <main>
-      <section>
-        <div id="tabellone"></div>
+      <section class="game-section">
+        <div id="tabellone" class="tabellone"></div>
         <button id="pulsanteEstrazione" class="pulsante">
           Estrai Nuovo Numero
         </button>
       </section>
-      <button id="aggiungiCartella" class="pulsante">Nuova cartella</button>
-      <div id="cartelleGiocatori"></div>
+      <div id="cartelleGiocatori" class="cartelle-container"></div>
+      <div class="cartelle-control">
+        <button id="aggiungiCartella" class="pulsante">Nuova cartella</button>
+      </div>
     </main>
 
     <script src="./scripts/index.js"></script>
