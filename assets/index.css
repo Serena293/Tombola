@@ -86,6 +86,7 @@ main {
     justify-content: center;
     gap: 2rem;
     margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .contenitoreCartella {
@@ -158,12 +159,10 @@ main {
     transform: translateY(-2px);
 }
 
-
-
 .game-controls {
     text-align: center;
     margin-top: 2rem;
-    padding-top: 2rem;
+    /* padding-top: 1rem; */
     border-top: 1px solid #eee;
 }
 
@@ -176,6 +175,16 @@ main {
     transform: translateY(-2px);
 }
 
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #9E2B22;
+  padding: 2rem;
+  color: #eee;
+}
+
+#year{margin-left: 0.25rem}
 
 /* Colori giocatori */
 .contenitoreCartella.giocatore-1 { border-color: #4285F4; }
@@ -201,4 +210,16 @@ main {
         height: 2.2rem;
         font-size: 0.9rem;
     }
+}
+
+@media (max-width: 480px) {
+  .singolaCasella {
+    width: 1.8rem !important;
+    height: 1.8rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .header-icon {
+    width: 20px !important;
+  }
 }

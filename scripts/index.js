@@ -1,3 +1,7 @@
+const soundEstrazione = new Howl({
+  src: ['https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg']
+});
+
 // Recupera le impostazioni dal localStorage
 const getGameSettings = () => {
     const defaultSettings = {
@@ -66,6 +70,15 @@ const creaCartella = (playerIndex) => {
     
     cartelleGiocatori.appendChild(contenitoreCartella);
 };
+function controllaVincita() {
+  document.querySelectorAll('.contenitoreCartella').forEach(cartella => {
+    const numeriEstratti = cartella.querySelectorAll('.numeroEstratto').length;
+    if (numeriEstratti === 15) {
+      const giocatore = cartella.querySelector('.player-name').textContent;
+      alert(`${giocatore} ha fatto TOMBOLA! 🎉`);
+    }
+  });
+}
 
 // Estrae un numero casuale
 const estraiNumero = () => {
@@ -74,6 +87,8 @@ const estraiNumero = () => {
         pulsanteEstrazione.disabled = true;
         return;
     }
+    controllaVincita()
+
 
     let numeroCasuale;
     do {
@@ -101,6 +116,7 @@ const estraiNumero = () => {
             }
         });
     });
+    soundEstrazione.play();
 };
 
 // Crea cartelle iniziali
@@ -130,8 +146,13 @@ const resetGame = () => {
     }
 };
 
+const dataFooter = () => {
+  const now = new Date()
+  document.getElementById("year").textContent = now.getFullYear()}
+
 
 // Inizializzazione
+dataFooter()
 generaTabellone();
 creaCartelleIniziali();
 pulsanteEstrazione.addEventListener("click", estraiNumero);
