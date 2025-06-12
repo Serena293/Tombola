@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tombola - Partita in corso</title>
+    <title> Tombola</title>
+    <link rel="icon" href="./assets/bingo.png" type="image/png">
     <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/index.css" />
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
   <body>
     <header>
       <div class="header-content">
@@ -25,6 +27,11 @@
       <div id="cartelleGiocatori" class="cartelle-container"></div>
       <div class="cartelle-control">
         <button id="aggiungiCartella" class="pulsante">Nuova cartella</button>
+      </div>
+      <div class="game-controls">
+        <button id="resetGame" class="pulsante pulsante-reset">
+          Reset Gioco
+        </button>
       </div>
     </main>
 

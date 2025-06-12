@@ -112,14 +112,27 @@ const creaCartelleIniziali = () => {
     }
 };
 
-// Aggiungi nuova cartella (distribuzione rotativa)
+
 let currentPlayerIndex = 0;
 pulsanteNuovaCartella.addEventListener("click", () => {
     creaCartella(currentPlayerIndex);
     currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
 });
 
+const resetGame = () => {
+   
+    if (confirm("Sei sicuro di voler ricominciare?")) {
+        
+        localStorage.removeItem('tombolaSettings');
+        
+        // Reindirizza alla pagina iniziale
+        window.location.href = 'firstPage.html';
+    }
+};
+
+
 // Inizializzazione
 generaTabellone();
 creaCartelleIniziali();
 pulsanteEstrazione.addEventListener("click", estraiNumero);
+document.getElementById('resetGame').addEventListener('click', resetGame);
