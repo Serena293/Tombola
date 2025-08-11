@@ -15,20 +15,9 @@ A fun, browser-based version of the classic Italian game **Tombola**, built with
 - 📅 Dynamic year displayed in footer
 
 
-## 🚀 How to Run
+## 🚀  Run Demo
 
-1. Clone or download the repository
-
-2. Open `firstPage.html` in your browser
-
-3. Set:
-   - Number of players
-   - Player names
-   - Cards per player
-
-4. Click **Start Game** — this will take you to `index.html`
-
-5. Click the **"Estrai numero"** button to begin drawing numbers
+https://tombola-iota.vercel.app/index.html
 
 6. Players can follow the game on screen; when a card is fully marked, a popup announces **TOMBOLA! 🎉**
 
