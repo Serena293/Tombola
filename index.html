@@ -1,50 +1,115 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tombola</title>
-    <link rel="icon" href="./assets/bingo.png" type="image/png" />
-    <link rel="stylesheet" href="./assets/reset.css" />
-    <link rel="stylesheet" href="./assets/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  </head>
-  <body>
-    
-    <header>
-      <div class="header-content">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tabellone e cartelle per una partita di Tombola in famiglia." />
+  <title>Tombola</title>
+  <link rel="icon" href="./assets/bingo.png" type="image/png" />
+  <link rel="stylesheet" href="./assets/reset.css" />
+  <link rel="stylesheet" href="./assets/index.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <div>
+        <p class="eyebrow">Partita locale</p>
         <h1>Tombola</h1>
-        <div id="player-info"></div>
       </div>
-    </header>
+      <div id="player-info" class="player-info"></div>
+    </div>
+  </header>
 
-    <main>
-      
-      <section class="game-section">
-        <div id="tabellone" class="tabellone"></div>
-        <button id="pulsanteEstrazione" class="pulsante">
-          Estrai Nuovo Numero
-        </button>
+  <main>
+    <div class="game-layout">
+      <section class="game-dashboard" aria-labelledby="draw-title">
+
+        <div class="draw-panel">
+          <div>
+            <p class="section-label" id="draw-title">Ultimo numero</p>
+            <div id="ultimoNumero" class="last-number" aria-live="polite">
+              --
+            </div>
+            <p id="draw-count" class="draw-count">0 / 90 estratti</p>
+          </div>
+
+          <div class="draw-actions">
+            <button id="pulsanteEstrazione" class="button button-primary">
+              Estrai nuovo numero
+            </button>
+            <label class="audio-control">
+              <input type="checkbox" id="audio-toggle" checked />
+              Suono attivo
+            </label>
+          </div>
+        </div>
+
+        <div class="history-panel">
+          <h2>Ultime estrazioni</h2>
+          <div id="cronologia" class="history-list"></div>
+        </div>
+
+        <p id="game-status" class="game-status" role="status"></p>
       </section>
-      <div id="cartelleGiocatori" class="cartelle-container"></div>
-      <div class="cartelle-control">
-        <button id="aggiungiCartella" class="pulsante">Nuova cartella</button>
-      </div>
-      <div class="game-controls">
-        <button id="resetGame" class="pulsante pulsante-reset">
-          Reset Gioco
+
+      <section class="board-panel" aria-labelledby="board-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">Numeri da 1 a 90</p>
+            <h2 id="board-title">Tabellone</h2>
+          </div>
+        </div>
+        <div id="tabellone" class="number-board"></div>
+      </section>
+    </div>
+    <section class="cards-section" aria-labelledby="cards-title">
+      <div class="section-heading cards-heading">
+        <div>
+          <p class="section-label">Cartelle 3 × 9</p>
+          <h2 id="cards-title">Cartelle dei giocatori</h2>
+        </div>
+        <button id="aggiungiCartella" class="button button-secondary">
+          Aggiungi cartella
         </button>
       </div>
-    </main>
-    <footer>
-      ©
-      <p><span id="year"></span> - Serena Ferraro</p>
-    </footer>
+      <div id="cartelleGiocatori" class="cards-container"></div>
+    </section>
 
-    <script src="./scripts/index.js"></script>
-  </body>
+    <section class="prizes-panel" aria-labelledby="prizes-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">Premi automatici</p>
+          <h2 id="prizes-title">Premi della partita</h2>
+        </div>
+      </div>
+      <ul id="premi" class="prizes-list"></ul>
+    </section>
+
+    <div class="game-controls">
+      <button id="resetGame" class="button button-danger">
+        Termina e cambia giocatori
+      </button>
+    </div>
+  </main>
+
+  <div id="award-banner" class="award-banner" role="alert" hidden>
+    <div>
+      <strong id="award-title">Nuovo premio</strong>
+      <p id="award-text"></p>
+    </div>
+    <button id="close-award" class="close-button" aria-label="Chiudi">
+      ×
+    </button>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Serena Ferraro</p>
+  </footer>
+
+  <script src="./scripts/gameLogic.js"></script>
+  <script src="./scripts/index.js"></script>
+</body>
+
 </html>

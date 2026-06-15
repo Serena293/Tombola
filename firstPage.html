@@ -1,39 +1,76 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tombola</title>
-     <link rel="icon" href="./assets/bingo.png" type="image/png">
-    <link rel="stylesheet" href="./assets/firstPage.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Configura una partita di Tombola da giocare in famiglia."
+    />
+    <title>Configura la Tombola</title>
+    <link rel="icon" href="./assets/bingo.png" type="image/png" />
+    <link rel="stylesheet" href="./assets/firstPage.css" />
+  </head>
+  <body>
     <main class="container">
-        <h1>Tombola</h1>
-        
-        <div class="setup-panel">
-            <h2>Configurazione Gioco</h2>
-            
-            <form id="game-setup">
-                <div class="form-group">
-                    <label for="player-count">Numero di giocatori (max 10):</label>
-                    <input type="number" id="player-count" min="1" max="10" required>
-                </div>
-                
-                <div id="players-container" class="players-container">
-                 
-                </div>
-                
-                <div class="form-group" id="cards-per-player-container" style="display:none;">
-                    <label for="cards-per-player">Cartelle per giocatore (max 4):</label>
-                    <input type="number" id="cards-per-player" min="1" max="4" value="1" required>
-                </div>
-                
-                <button type="submit" id="start-game">Inizia Gioco</button>
-            </form>
-        </div>
+      <section class="intro">
+        <p class="eyebrow">Tombola in famiglia</p>
+        <h1>Prepara la partita</h1>
+        <p>
+          Scegli i giocatori e le cartelle. La partita verrà salvata
+          automaticamente su questo dispositivo.
+        </p>
+      </section>
+
+      <section class="setup-panel" aria-labelledby="setup-title">
+        <h2 id="setup-title">Configurazione</h2>
+
+        <form id="game-setup">
+          <div class="form-group">
+            <label for="player-count">Numero di giocatori</label>
+            <input
+              type="number"
+              id="player-count"
+              name="player-count"
+              min="1"
+              max="10"
+              inputmode="numeric"
+              required
+            />
+            <small>Da 1 a 10 giocatori.</small>
+          </div>
+
+          <div id="players-container" class="players-container"></div>
+
+          <div
+            class="form-group"
+            id="cards-per-player-container"
+            hidden
+          >
+            <label for="cards-per-player">Cartelle per giocatore</label>
+            <input
+              type="number"
+              id="cards-per-player"
+              name="cards-per-player"
+              min="1"
+              max="4"
+              value="1"
+              inputmode="numeric"
+              required
+            />
+            <small>Da 1 a 4 cartelle ciascuno.</small>
+          </div>
+
+          <p id="setup-message" class="form-message" aria-live="polite">
+            Inserisci il numero di giocatori per iniziare.
+          </p>
+
+          <button type="submit" id="start-game">Inizia la partita</button>
+        </form>
+      </section>
     </main>
 
+    <script src="./scripts/gameLogic.js"></script>
     <script src="./scripts/firstPage.js"></script>
-</body>
+  </body>
 </html>

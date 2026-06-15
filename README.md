@@ -1,33 +1,29 @@
-# 🎱 Tombola Web Game
+# Tombola Web Game
 
-A fun, browser-based version of the classic Italian game **Tombola**, built with **HTML**, **CSS**, and **JavaScript**. You can play with multiple players, assign custom names, and generate random cards. Perfect for friends and family!
+Gioco della Tombola italiana realizzato con HTML, CSS e JavaScript.
 
-## 🎮 Features
+## Funzionalita
 
-- 🎲 Interactive number drawing with animated effects
-- 👥 Custom player setup: choose number of players and enter their names
-- 🃏 Select how many cards per player (1 or more)
-- 📋 Automatically generated cards with 15 unique numbers each
-- 🧠 Numbers are highlighted both on the board and player cards
-- 🔊 Sound effect when drawing a number
-- 🏆 Auto-detects when a player completes a card (TOMBOLA!)
-- 💾 Game settings saved in `localStorage`
-- 📅 Dynamic year displayed in footer
+- Configurazione da 1 a 10 giocatori
+- Da 1 a 4 cartelle per giocatore
+- Cartelle italiane 3 x 9 con 15 numeri validi
+- Estrazione casuale dei numeri da 1 a 90 senza duplicati
+- Rilevamento automatico di ambo, terno, quaterna, cinquina e tombola
+- Salvataggio e ripristino della partita tramite `localStorage`
+- Interfaccia responsive per desktop, tablet e telefono
+- Suono generato localmente, senza dipendenze esterne
 
+## Avvio
 
-## 🚀  Run Demo
+Apri `firstPage.html` nel browser oppure servi la cartella con un server
+statico locale.
 
-https://tombola-iota.vercel.app/index.html
+Demo: https://tombola-iota.vercel.app/firstPage.html
 
-6. Players can follow the game on screen; when a card is fully marked, a popup announces **TOMBOLA! 🎉**
+## Test
 
-## 🔊 Sound
+Richiede Node.js:
 
-The game includes a sound when drawing a number. It uses: 
-
-``js
-const soundEstrazione = new Howl({
-  src: ['https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg']
-});
-
-Created by Serena
+```bash
+node --test
+```
